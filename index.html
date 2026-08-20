@@ -194,8 +194,13 @@ header{
   #sidebar{display:none;}
   #drawerBtn{display:inline-flex;}
   #main{padding:18px 16px 90px;}
-  .search-wrap{flex:0 1 130px;}
   .origin-text{font-size:17px;}
+  /* 移动端：header 两行 —— 第一行 目录+应用名+今日，第二行 搜索整宽 */
+  header{flex-wrap:wrap;gap:8px;padding:8px max(12px,env(safe-area-inset-left)) 10px max(12px,env(safe-area-inset-right));}
+  .brand-title{font-size:16px;letter-spacing:1px;}
+  .brand-sub{display:none;}
+  .search-wrap{flex:1 1 100%;order:5;min-width:0;margin-top:2px;}
+  .search-wrap input{padding:8px 12px 8px 30px;}
 }
 </style>
 </head>
@@ -215,7 +220,7 @@ header{
     <span class="icon">🔍</span>
     <input id="searchInput" type="search" placeholder="检索原文/释义/案例/心得" autocomplete="off">
   </div>
-  <button class="top-btn" id="todayBtn" title="今日一章">今日</button>
+  <button class="top-btn" id="todayBtn" title="今日一章：打开顺序上第一个未读章节（研读进度推进）">今日</button>
 </header>
 
 <div id="mask"></div>
@@ -275,11 +280,11 @@ function byId(id){ return document.getElementById(id); }
 function show(view){ ['home','reader','search','tags'].forEach(function(v){ byId('view-'+v).classList.toggle('show', v===view); }); if(view!=='reader') window.scrollTo(0,0); }
 
 function todayChapter(){
-  // 今日一章：以年内序号 + 常量偏移 保证同一天稳定
-  var now = new Date();
-  var start = new Date(now.getFullYear(),0,0);
-  var doy = Math.floor((now - start) / 86400000);
-  return ((doy + 3) % chapters.length) + 1;
+  // 今日一章 = 研读进度推进：打开顺序上第一个未读章节；全部已读则回到第1章（新一轮）
+  for (var i = 1; i <= chapters.length; i++) {
+    if (!read[i]) return i;
+  }
+  return 1;
 }
 
 /* ---------- 渲染：侧栏 ---------- */
