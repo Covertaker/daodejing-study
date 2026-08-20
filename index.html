@@ -240,8 +240,7 @@ header{
           <div class="stat"><b id="st-note">0</b><span>心得</span></div>
         </div>
       </div>
-      <div class="sec-title">上篇 · 道经（前9章已收录，余章待续）</div>
-      <div class="grid" id="chapterGrid"></div>
+      <div id="homeGroups"></div>
     </section>
 
     <section id="view-reader" class="view"></section>
@@ -320,9 +319,15 @@ function bindSidebar(root){
 function renderHome(){
   byId('st-read').textContent = chapters.filter(function(c){ return read[c.num]; }).length;
   byId('st-note').textContent = Object.keys(notes).filter(function(k){ return notes[k] && notes[k].trim(); }).length;
-  var g = byId('chapterGrid');
-  var h = '';
-  for(var i=1;i<=81;i++){
+  var g = byId('homeGroups');
+  var h = groupHTML('上篇 · 道经', 1, 37);
+  h += groupHTML('下篇 · 德经', 38, 81);
+  g.innerHTML = h;
+  g.querySelectorAll('.ch-card[data-num]').forEach(function(b){ b.addEventListener('click', function(){ openChapter(+b.dataset.num); }); });
+}
+function groupHTML(label, from, to){
+  var h = '<div class="sec-title">'+label+'（第'+from+'—'+to+'章）</div><div class="grid">';
+  for(var i=from;i<=to;i++){
     var c = chapters.find(function(x){ return x.num===i; });
     if(c){
       var r = !!read[c.num];
@@ -334,8 +339,7 @@ function renderHome(){
       h += '<div class="ch-card soon"><div class="no">第'+i+'章</div><div class="nm">待续</div></div>';
     }
   }
-  g.innerHTML = h;
-  g.querySelectorAll('.ch-card[data-num]').forEach(function(b){ b.addEventListener('click', function(){ openChapter(+b.dataset.num); }); });
+  return h + '</div>';
 }
 
 /* ---------- 渲染：阅读页 ---------- */
