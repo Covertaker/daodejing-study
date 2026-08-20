@@ -195,8 +195,12 @@ header{
   #drawerBtn{display:inline-flex;}
   #main{padding:18px 16px 90px;}
   .origin-text{font-size:17px;}
-  /* 移动端：header 两行 —— 第一行 目录+应用名+循序，第二行 搜索整宽 */
+  /* 移动端：header 两行 —— 第一行 目录 | 品牌(居中) | 循序，第二行 搜索整宽 */
   header{flex-wrap:wrap;gap:8px;padding:8px max(12px,env(safe-area-inset-left)) 10px max(12px,env(safe-area-inset-right));}
+  #drawerBtn{flex:0 0 auto;}
+  .spacer{display:none;}
+  .brand{flex:1;justify-content:center;min-width:0;}
+  #todayBtn{flex:0 0 auto;}
   .brand-title{font-size:16px;letter-spacing:1px;}
   .brand-sub{display:none;}
   .search-wrap{flex:1 1 100%;order:5;min-width:0;margin-top:2px;}
