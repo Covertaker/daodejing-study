@@ -239,7 +239,7 @@ header{
         <div class="sub">原文 · 释义 · 现实案例 · 心得 · 老子五千年</div>
         <div class="stats">
           <div class="stat"><b id="st-read">0</b><span>已读</span></div>
-          <div class="stat"><b>9</b><span>已收录</span></div>
+          <div class="stat"><b id="st-count">0</b><span>已收录</span></div>
           <div class="stat"><b>81</b><span>全经</span></div>
           <div class="stat"><b id="st-note">0</b><span>心得</span></div>
         </div>
@@ -322,6 +322,7 @@ function bindSidebar(root){
 /* ---------- 渲染：首页 ---------- */
 function renderHome(){
   byId('st-read').textContent = chapters.filter(function(c){ return read[c.num]; }).length;
+  byId('st-count').textContent = chapters.length;
   byId('st-note').textContent = Object.keys(notes).filter(function(k){ return notes[k] && notes[k].trim(); }).length;
   var g = byId('homeGroups');
   var h = groupHTML('上篇 · 道经', 1, 37);
