@@ -1,6 +1,6 @@
 window.APP_DATA = {
   "meta": {
-    "name": "道德经研读",
+    "name": "玄览 · 道德经",
     "version": "1.0.0",
     "chapterCount": 9
   },

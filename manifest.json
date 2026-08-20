@@ -1,7 +1,7 @@
 {
-  "name": "道德经研读",
-  "short_name": "道德经",
-  "description": "道德经研读：原文、释义、现实案例与心得记录",
+  "name": "玄览 · 道德经",
+  "short_name": "玄览",
+  "description": "玄览 · 道德经研读：原文、释义、现实案例与心得记录",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#2d6a6a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="道德经">
+<meta name="apple-mobile-web-app-title" content="玄览">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<title>道德经研读</title>
+<title>玄览 · 道德经</title>
 <style>
 /* ============ 设计令牌（东方书斋 · 石青主色） ============ */
 :root{
@@ -211,7 +211,7 @@ header{
   <div class="brand" id="brandBtn">
     <div class="brand-seal">道</div>
     <div>
-      <div class="brand-title">道德经研读</div>
+      <div class="brand-title">玄览</div>
       <div class="brand-sub">老子 · 五千年书斋</div>
     </div>
   </div>
@@ -501,7 +501,7 @@ function exportNotes(){
   var blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = '道德经研读-心得备份.json';
+  a.download = '玄览-心得备份.json';
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -530,7 +530,7 @@ function renderDrawer(){
   d.innerHTML = '';
   var inner = document.createElement('div');
   inner.innerHTML = '<div class="brand"><div class="brand-seal">道</div>'
-    + '<div><div class="brand-title">道德经研读</div><div class="brand-sub">章 目</div></div></div>';
+    + '<div><div class="brand-title">玄览</div><div class="brand-sub">章 目</div></div></div>';
   d.appendChild(inner);
   var list = document.createElement('div');
   list.innerHTML = chapterSideHTML();
