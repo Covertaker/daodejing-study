@@ -195,7 +195,7 @@ header{
   #drawerBtn{display:inline-flex;}
   #main{padding:18px 16px 90px;}
   .origin-text{font-size:17px;}
-  /* 移动端：header 两行 —— 第一行 目录+应用名+今日，第二行 搜索整宽 */
+  /* 移动端：header 两行 —— 第一行 目录+应用名+循序，第二行 搜索整宽 */
   header{flex-wrap:wrap;gap:8px;padding:8px max(12px,env(safe-area-inset-left)) 10px max(12px,env(safe-area-inset-right));}
   .brand-title{font-size:16px;letter-spacing:1px;}
   .brand-sub{display:none;}
@@ -220,7 +220,7 @@ header{
     <span class="icon">🔍</span>
     <input id="searchInput" type="search" placeholder="检索原文/释义/案例/心得" autocomplete="off">
   </div>
-  <button class="top-btn" id="todayBtn" title="今日一章：打开顺序上第一个未读章节（研读进度推进）">今日</button>
+  <button class="top-btn" id="todayBtn" title="循序：打开顺序上第一个未读章节，逐章推进研读进度">循序</button>
 </header>
 
 <div id="mask"></div>
@@ -280,7 +280,7 @@ function byId(id){ return document.getElementById(id); }
 function show(view){ ['home','reader','search','tags'].forEach(function(v){ byId('view-'+v).classList.toggle('show', v===view); }); if(view!=='reader') window.scrollTo(0,0); }
 
 function todayChapter(){
-  // 今日一章 = 研读进度推进：打开顺序上第一个未读章节；全部已读则回到第1章（新一轮）
+  // 循序：打开顺序上第一个未读章节，逐章推进研读进度；全部已读则回到第1章（新一轮）
   for (var i = 1; i <= chapters.length; i++) {
     if (!read[i]) return i;
   }
